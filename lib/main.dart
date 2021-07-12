@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_app/utils.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,8 +26,12 @@ Widget iconButton(icon){
 }
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
+    Utils _utils = Utils();
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -92,11 +97,23 @@ class HomePage extends StatelessWidget {
                  iconButton(FontAwesomeIcons.instagram),
                  iconButton(FontAwesomeIcons.linkedin),
                   Expanded(child: Divider(color: Colors.grey,),),
-
                 ],
               ),
             ),
-          )
+          ),
+          Positioned(
+            top: 20,
+            right: 20,
+            child: Container(
+              color: Colors.white,
+              child: IconButton(
+                icon: FaIcon(FontAwesomeIcons.gripLines,color: Colors.black,),
+                onPressed: (){
+                  _utils.showBottomSheet(context);
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );
